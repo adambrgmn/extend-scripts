@@ -26,9 +26,16 @@
     "url": "https://github.com/adambrgmn/extend-scripts/issues"
   },
   "homepage": "https://github.com/adambrgmn/extend-scripts#readme",
-  "devDependencies": {
-    "cz-conventional-changelog": "^2.1.0",
+  "engines": {
+    "node": ">= 8",
+    "npm": ">= 5"
+  },
+  "dependencies": {
+    "commander": "^2.12.2",
     "frans-scripts": "^1.1.0"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0"
   },
   "config": {
     "commitizen": {
