@@ -1,0 +1,37 @@
+{
+  "name": "extend-scripts",
+  "version": "0.0.0",
+  "description":
+    "Common scripts for developing and building Adobe Extendscript plugins",
+  "main": "index.js",
+  "scripts": {
+    "add-contributor": "frans-scripts contributors add",
+    "test": "frans-scripts test",
+    "test:update": "frans-scripts test --updateSnapshot",
+    "build": "frans-scripts build",
+    "lint": "frans-scripts lint",
+    "format": "frans-scripts format",
+    "validate": "frans-scripts validate",
+    "precommit": "frans-scripts precommit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adambrgmn/extend-scripts.git"
+  },
+  "keywords": ["scripts", "extendscript"],
+  "author": "Adam Bergman <adam@fransvilhelm.com> (http://fransvilhelm.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adambrgmn/extend-scripts/issues"
+  },
+  "homepage": "https://github.com/adambrgmn/extend-scripts#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0",
+    "frans-scripts": "^1.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
