@@ -1,6 +1,6 @@
 {
   "name": "extend-scripts",
-  "version": "0.0.0",
+  "version": "0.0.0-semantically-released",
   "description":
     "Common scripts for developing and building Adobe Extendscript plugins",
   "main": "index.js",
@@ -12,11 +12,12 @@
     "lint": "frans-scripts lint",
     "format": "frans-scripts format",
     "validate": "frans-scripts validate",
-    "precommit": "frans-scripts precommit"
+    "precommit": "frans-scripts precommit",
+    "travis-after-success": "frans-scripts travis-after-success"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adambrgmn/extend-scripts.git"
+    "url": "https://github.com/adambrgmn/extend-scripts.git"
   },
   "keywords": ["scripts", "extendscript"],
   "author": "Adam Bergman <adam@fransvilhelm.com> (http://fransvilhelm.com)",
