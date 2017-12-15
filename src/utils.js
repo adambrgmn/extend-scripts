@@ -83,5 +83,6 @@ exports.paths = paths;
 exports.pkgs = pkgs;
 exports.spawn = spawn;
 exports.resolveBin = resolveBin;
+exports.fromRoot = fromRoot;
 exports.hasFile = hasFile;
 exports.hasPkgProp = hasPkgProp;
