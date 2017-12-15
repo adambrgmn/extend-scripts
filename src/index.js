@@ -1,10 +1,14 @@
 #!/usr/bin/env node
+
+const { satisfies, clean } = require('semver');
+const { engines } = require('../package.json');
+
 let shouldThrow;
 
 try {
   shouldThrow =
     require(`${process.cwd()}/package.json`).name === 'extend-scripts' &&
-    Number(process.version.slice(1).split('.')[0]) < 8;
+    !satisfies(clean(process.version), engines.node);
 } catch (error) {
   // ignore
 }
