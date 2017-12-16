@@ -59,9 +59,29 @@ const hasFile = (...p) => fs.existsSync(fromRoot(...p));
 
 const hasPkgProp = props => arrify(props).some(prop => has(pkgs.project, prop));
 
+const getPackageManagerBin = () => {
+  try {
+    resolveBin('yarn');
+  } catch (err) {
+    return 'npm';
+  }
+
+  if (hasFile('yarn.lock')) return 'yarn';
+  return 'npm';
+};
+
+function resolveScripts() {
+  if (pkgs.project.name === 'extend-scripts') {
+    return require.resolve('./').replace(process.cwd(), '.');
+  }
+  return resolveBin('extend-scripts');
+}
+
 exports.paths = paths;
 exports.pkgs = pkgs;
 exports.resolveBin = resolveBin;
 exports.fromRoot = fromRoot;
 exports.hasFile = hasFile;
 exports.hasPkgProp = hasPkgProp;
+exports.getPackageManagerBin = getPackageManagerBin;
+exports.resolveScripts = resolveScripts;
