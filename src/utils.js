@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const crossSpawn = require('cross-spawn');
 const which = require('which');
 const readPkgUp = require('read-pkg-up');
 const arrify = require('arrify');
@@ -25,25 +24,6 @@ const pkgs = {
   script: scriptPkg,
   project: projectPkg,
 };
-
-const spawn = (...args) =>
-  new Promise((resolve, reject) => {
-    const proc = crossSpawn(...args);
-
-    proc.on('error', reject);
-    proc.on('close', code => {
-      const result = {
-        pid: proc.pid,
-        output: proc.stdio,
-        stdout: proc.stdout,
-        stderr: proc.stderr,
-        status: code,
-        signal: proc.signalCode,
-      };
-
-      resolve(result);
-    });
-  });
 
 const resolveBin = (
   modName,
@@ -81,7 +61,6 @@ const hasPkgProp = props => arrify(props).some(prop => has(pkgs.project, prop));
 
 exports.paths = paths;
 exports.pkgs = pkgs;
-exports.spawn = spawn;
 exports.resolveBin = resolveBin;
 exports.fromRoot = fromRoot;
 exports.hasFile = hasFile;
