@@ -40,9 +40,13 @@ async function main() {
   const filesGiven = files.length > 0;
   const filesToApply = filesGiven ? [] : ['.'];
 
+  const filteredArgs = filesGiven
+    ? args.filter(a => !files.includes(a) || a.endsWith('.js'))
+    : [];
+
   const result = spawn.sync(
     resolveBin('eslint'),
-    [...config, ...ignore, ...cache, ...args, ...filesToApply],
+    [...config, ...ignore, ...cache, ...filteredArgs, ...filesToApply],
     { stdio: 'inherit' },
   );
 
