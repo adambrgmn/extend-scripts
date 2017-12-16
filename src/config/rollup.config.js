@@ -7,12 +7,13 @@ const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 const json = require('rollup-plugin-json');
 const babel = require('rollup-plugin-babel');
+const es3 = require('rollup-plugin-es3');
 const { hasFile, hasPkgProp, paths, pkgs } = require('../utils');
 
 const here = p => path.join(__dirname, p);
 
-const useBuiltinConfig = !hasFile('.babelrc') && !hasPkgProp('babel');
-const babelPresets = useBuiltinConfig ? here('../config/babelrc.js') : [];
+const useBuiltinBabelConfig = !hasFile('.babelrc') && !hasPkgProp('babel');
+const babelPresets = useBuiltinBabelConfig ? here('../config/babelrc.js') : [];
 
 const targetEnv = process.env.TARGET_ENV;
 
@@ -20,23 +21,24 @@ const createConfig = input => {
   let pkgName = path.basename(input, '.js');
   if (pkgName === 'index') pkgName = pkgs.project.name;
 
-  const banner = `${targetEnv && `// @target ${targetEnv}`}
-
+  const info = `
 /**
  * ${pkgName}
  * v${pkgs.project.version}
  * 
- * Creator: ${pkgs.project.author}
+ * ${pkgs.project.description}
+${pkgs.project.author &&
+    ` * by ${pkgs.project.author.name} (${pkgs.project.author.email})`}
  */
-  `;
+`;
+
+  const banner = `${
+    targetEnv ? `// @target ${targetEnv}\n\n` : ''
+  }${info.trim()}\n`;
 
   const config = {
     input,
     plugins: [
-      nodeBuiltIns(),
-      nodeGlobals(),
-      resolve({ preferBuiltins: false, jsnext: true, main: true }),
-      commonjs({ include: 'node_modules/**' }),
       json(),
       babel({
         externalHelpers: true,
@@ -44,6 +46,11 @@ const createConfig = input => {
         exclude: 'node_modules/**',
         presets: babelPresets,
       }),
+      nodeBuiltIns(),
+      nodeGlobals(),
+      resolve({ preferBuiltins: false, jsnext: true, main: true }),
+      commonjs({ include: 'node_modules/**' }),
+      es3(),
     ],
     banner,
     output: {
