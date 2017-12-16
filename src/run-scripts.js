@@ -2,7 +2,7 @@ const path = require('path');
 const { promisify } = require('util');
 const glob = promisify(require('glob'));
 const chalk = require('chalk');
-const { spawn } = require('./utils');
+const spawn = require('cross-spawn');
 
 const getEnv = script =>
   Object.keys(process.env)
@@ -53,7 +53,7 @@ const spawnScript = async (executor, script, args) => {
 
   if (!scriptPath) throw new Error(`Unknown script "${script}"`);
 
-  const result = await spawn(executor, [scriptPath, ...args], {
+  const result = spawn.sync(executor, [scriptPath, ...args], {
     stdio: 'inherit',
     env: getEnv(script),
   });

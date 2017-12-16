@@ -4,7 +4,8 @@ const { promisify } = require('util');
 const rimraf = promisify(require('rimraf'));
 const yargsParser = require('yargs-parser');
 const has = require('lodash.has');
-const { spawn, hasFile, fromRoot, resolveBin } = require('../utils');
+const spawn = require('cross-spawn');
+const { hasFile, fromRoot, resolveBin } = require('../utils');
 
 const here = p => path.join(__dirname, p);
 const hereRelative = p => here(p).replace(process.cwd(), '.');
@@ -39,7 +40,7 @@ async function main() {
     await rimraf(fromRoot('dist'));
   }
 
-  const result = await spawn(resolveBin('rollup'), rollupArgs, {
+  const result = spawn.sync(resolveBin('rollup'), rollupArgs, {
     stdio: 'inherit',
   });
 

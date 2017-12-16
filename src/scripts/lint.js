@@ -1,7 +1,8 @@
 const path = require('path');
 const chalk = require('chalk');
 const yargsParser = require('yargs-parser');
-const { spawn, resolveBin, hasPkgProp, hasFile } = require('../utils');
+const spawn = require('cross-spawn');
+const { resolveBin, hasPkgProp, hasFile } = require('../utils');
 
 const here = p => path.join(__dirname, p);
 const hereRelative = p => here(p).replace(process.cwd(), '.');
@@ -20,7 +21,7 @@ async function main() {
 
   const useBuiltinIgnore =
     !args.includes('--ignore-path') &&
-    !args.include('--no-ignore') &&
+    !args.includes('--no-ignore') &&
     !hasFile('.eslintignore') &&
     !hasPkgProp('eslintIgnore');
 
@@ -39,7 +40,7 @@ async function main() {
   const filesGiven = files.length > 0;
   const filesToApply = filesGiven ? [] : ['.'];
 
-  const result = await spawn(
+  const result = spawn.sync(
     resolveBin('eslint'),
     [...config, ...ignore, ...cache, ...args, ...filesToApply],
     { stdio: 'inherit' },
