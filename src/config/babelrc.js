@@ -6,6 +6,7 @@ module.exports = {
         modules: false,
       },
     ],
+    require.resolve('babel-preset-flow'),
   ],
   plugins: [
     require.resolve('babel-plugin-external-helpers'),
