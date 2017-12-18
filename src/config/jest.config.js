@@ -16,7 +16,7 @@ const jestConfig = {
   roots: [fromRoot('src')],
   testEnvironment: 'node', // TODO create custom Extendscript environment
   collectCoverageFrom: ['src/**/*.js?(x)'],
-  testMatch: ['**/__tests__/**/*.js?(x)', '**/(*.)(spec|test).js?(x)'],
+  testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)(spec|test).js?(x)'],
   testPathIgnorePatterns: [...ignores],
   coveragePathIgnorePatterns: [...ignores],
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
@@ -31,7 +31,7 @@ const jestConfig = {
 };
 
 if (useBuiltInBabelConfig) {
-  jestConfig.transform = { '^.+\\.js$': here('./babel-transform') };
+  jestConfig.transform = { '^.+\\.jsx?$': here('./babel-transform') };
 }
 
 module.exports = jestConfig;

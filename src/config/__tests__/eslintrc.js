@@ -1,11 +1,6 @@
 import { CLIEngine } from 'eslint';
 import baseConfig from '../eslintrc';
 
-jest.mock('../../utils', () => ({
-  ...require.requireActual('../../utils'),
-  ifAnyDep: jest.fn((key, t) => t),
-}));
-
 const cli = new CLIEngine({
   useEslintrc: false,
   baseConfig,
