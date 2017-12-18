@@ -77,6 +77,21 @@ function resolveScripts() {
   return resolveBin('extend-scripts');
 }
 
+function envIsSet(name) {
+  return (
+    process.env.hasOwnProperty(name) && // eslint-disable-line
+    process.env[name] &&
+    process.env[name] !== 'undefined'
+  );
+}
+
+function parseEnv(name, def) {
+  if (envIsSet(name)) {
+    return JSON.parse(process.env[name]);
+  }
+  return def;
+}
+
 exports.paths = paths;
 exports.pkgs = pkgs;
 exports.resolveBin = resolveBin;
@@ -85,3 +100,5 @@ exports.hasFile = hasFile;
 exports.hasPkgProp = hasPkgProp;
 exports.getPackageManagerBin = getPackageManagerBin;
 exports.resolveScripts = resolveScripts;
+exports.envIsSet = envIsSet;
+exports.parseEnv = parseEnv;
