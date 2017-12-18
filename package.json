@@ -1,7 +1,8 @@
 {
   "name": "extend-scripts",
   "version": "0.0.0-semantically-released",
-  "description": "Common scripts for developing and building Adobe Extendscript plugins",
+  "description":
+    "Common scripts for developing and building Adobe Extendscript plugins",
   "main": "index.js",
   "bin": {
     "extend-scripts": "dist/index.js"
@@ -21,10 +22,7 @@
     "type": "git",
     "url": "https://github.com/adambrgmn/extend-scripts.git"
   },
-  "keywords": [
-    "scripts",
-    "extendscript"
-  ],
+  "keywords": ["scripts", "extendscript"],
   "author": "Adam Bergman <adam@fransvilhelm.com> (http://fransvilhelm.com)",
   "license": "MIT",
   "bugs": {
