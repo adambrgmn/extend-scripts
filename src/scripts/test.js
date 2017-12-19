@@ -17,6 +17,7 @@ async function main() {
   const useWatch =
     !isCI &&
     !parseEnv('SCRIPTS_PRECOMMIT', false) &&
+    !parseEnv('SCRIPTS_VALIDATE', false) &&
     !args.includes('--no-watch') &&
     !args.includes('--coverage') &&
     !args.includes('--updateSnapshot');
