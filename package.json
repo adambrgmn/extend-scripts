@@ -50,14 +50,16 @@
     "doctoc": "^1.3.0",
     "eslint": "^4.13.1",
     "eslint-plugin-extendscript": "^1.0.1",
-    "frans-scripts": "^1.1.0",
     "glob": "^7.1.2",
+    "husky": "^0.14.3",
     "is-ci": "^1.0.10",
     "jest": "^22.0.1",
+    "lint-staged": "^6.0.0",
     "lodash.has": "^4.5.2",
+    "prettier": "^1.9.2",
     "read-pkg-up": "^3.0.0",
     "rimraf": "^2.6.2",
-    "rollup": "^0.52.1",
+    "rollup": "^0.52.3",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-es3": "^1.1.0",
@@ -70,7 +72,8 @@
     "yargs-parser": "^8.0.0"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^2.1.0"
+    "cz-conventional-changelog": "^2.1.0",
+    "frans-scripts": "^1.2.0"
   },
   "config": {
     "commitizen": {
