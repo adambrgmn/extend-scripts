@@ -25,6 +25,7 @@ const createConfig = input => {
 /**
  * ${pkgName}
  * v${pkgs.project.version}
+ * Updated: ${new Date().toLocaleDateString()}
  * 
  * ${pkgs.project.description}
 ${pkgs.project.author &&
