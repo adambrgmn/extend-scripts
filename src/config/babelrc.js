@@ -10,7 +10,7 @@ module.exports = {
   ],
   plugins: [
     require.resolve('babel-macros'),
-    require.resolve('babel-plugin-external-helpers'),
+    !isTest ? require.resolve('babel-plugin-external-helpers') : null,
     require.resolve('babel-plugin-transform-class-properties'),
     require.resolve('babel-plugin-transform-object-rest-spread'),
     require.resolve('babel-plugin-minify-dead-code-elimination'),
