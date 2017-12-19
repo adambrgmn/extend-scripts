@@ -1,7 +1,6 @@
 const jestConfig = require('./src/config/jest.config');
 
 module.exports = Object.assign(jestConfig, {
-  coverageThreshold: null,
   testPathIgnorePatterns: [
     '/node_modules/',
     '/fixtures/',

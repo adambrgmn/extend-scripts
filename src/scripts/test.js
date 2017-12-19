@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 const isCI = require('is-ci');
-const { hasPkgProp, parseEnv, hasFile } = require('../utils');
+const spawn = require('cross-spawn');
+const { hasPkgProp, parseEnv, hasFile, resolveBin } = require('../utils');
 
 process.env.BABEL_ENV = 'test';
 process.env.NODE_ENV = 'test';
@@ -26,7 +27,13 @@ async function main() {
     ? ['--config', JSON.stringify(require('../config/jest.config'))]
     : [];
 
-  require('jest').run([...config, ...watch, ...args]);
+  const result = spawn.sync(
+    resolveBin('jest'),
+    [...config, ...watch, ...args],
+    { stdio: 'inherit' },
+  );
+
+  process.exit(result.status);
 }
 
 main().catch(err => {
