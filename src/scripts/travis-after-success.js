@@ -1,7 +1,5 @@
-const path = require('path');
-const resolve = require('resolve');
 const chalk = require('chalk');
-const { hasFile, hasPkgProp } = require('../utils');
+const { hasFile, hasPkgProp, fakeCosmiconfig } = require('../utils');
 
 async function main() {
   const useBuiltinConfig =
@@ -9,29 +7,14 @@ async function main() {
     !hasFile('semantic-release.config.js') &&
     !hasPkgProp('release');
 
-  const semanticPath = require.resolve('semantic-release');
-  const cosmiconfigPath = resolve.sync('cosmiconfig', {
-    basedir: path.dirname(semanticPath),
-  });
-
-  const realCosmiconfig = require(cosmiconfigPath);
-
-  function fakeCosmiconfig(...args) {
-    if (args[0] === 'release') {
-      return {
-        load() {
-          return Promise.resolve({
-            config: require('../config/semantic-release.config'),
-          });
-        },
-      };
-    }
-
-    return realCosmiconfig;
+  if (useBuiltinConfig) {
+    fakeCosmiconfig(
+      'semantic-release',
+      require('../config/semantic-release.config'),
+      'release',
+    );
   }
 
-  if (useBuiltinConfig)
-    require.cache[cosmiconfigPath] = { exports: fakeCosmiconfig };
   await require('semantic-release/cli')();
 }
 
