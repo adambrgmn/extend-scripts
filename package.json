@@ -55,6 +55,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
+    "babel-runtime": "^6.26.0",
     "chalk": "^2.3.0",
     "concurrently": "^3.5.1",
     "cross-spawn": "^5.1.0",
@@ -86,6 +87,7 @@
     "yargs-parser": "^8.1.0"
   },
   "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
     "cz-conventional-changelog": "^2.1.0",
     "frans-scripts": "^1.3.0"
   },
