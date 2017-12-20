@@ -39,7 +39,7 @@
     "all-contributors-cli": "^4.9.1",
     "arrify": "^1.0.1",
     "babel-core": "^6.26.0",
-    "babel-jest": "^22.0.1",
+    "babel-jest": "^22.0.3",
     "babel-macros": "^1.2.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-minify-dead-code-elimination": "^0.2.0",
@@ -56,7 +56,7 @@
     "glob": "^7.1.2",
     "husky": "^0.14.3",
     "is-ci": "^1.0.10",
-    "jest": "^22.0.1",
+    "jest": "^22.0.3",
     "lint-staged": "^6.0.0",
     "lodash.has": "^4.5.2",
     "prettier": "^1.9.2",
@@ -74,11 +74,11 @@
     "semantic-release": "11",
     "semver": "^5.4.1",
     "which": "^1.3.0",
-    "yargs-parser": "^8.0.0"
+    "yargs-parser": "^8.1.0"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
-    "frans-scripts": "^1.2.0"
+    "frans-scripts": "^1.2.1"
   },
   "config": {
     "commitizen": {
