@@ -7,6 +7,14 @@
   "bin": {
     "extend-scripts": "dist/index.js"
   },
+  "files": [
+    "dist",
+    "babel.js",
+    "config.js",
+    "eslint.js",
+    "jest.js",
+    "prettier.js"
+  ],
   "scripts": {
     "add-contributor": "frans-scripts contributors add",
     "test": "frans-scripts test",
