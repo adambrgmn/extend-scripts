@@ -4,6 +4,7 @@ const which = require('which');
 const readPkgUp = require('read-pkg-up');
 const arrify = require('arrify');
 const has = require('lodash.has');
+const resolve = require('resolve');
 
 const { pkg: scriptPkg, path: scriptPkgPath } = readPkgUp.sync({
   cwd: __dirname,
@@ -135,6 +136,21 @@ function getConcurrentlyArgs(scripts, { killOthers = true } = {}) {
   ].filter(Boolean)
 }
 
+function fakeCosmiconfig(pkg, config, pkgProp = pkg) {
+  const pkgPath = require.resolve(pkg);
+  const cosmiconfigPath = resolve.sync('cosmiconfig', {
+    basedir: path.dirname(pkgPath),
+  });
+
+  const realCosmiconfig = require(cosmiconfigPath);
+  function fake(...args) {
+    if (args[0] === pkgProp) return { load: () => Promise.resolve({ config }) };
+    return realCosmiconfig;
+  }
+
+  require.cache[cosmiconfigPath] = { exports: fake };
+}
+
 exports.paths = paths;
 exports.pkgs = pkgs;
 exports.resolveBin = resolveBin;
@@ -147,3 +163,4 @@ exports.resolveScripts = resolveScripts;
 exports.envIsSet = envIsSet;
 exports.parseEnv = parseEnv;
 exports.getConcurrentlyArgs = getConcurrentlyArgs;
+exports.fakeCosmiconfig = fakeCosmiconfig;

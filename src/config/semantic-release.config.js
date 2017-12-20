@@ -11,14 +11,14 @@ module.exports = {
   dryRun: !autorelease,
   getLastRelease: '@semantic-release/last-release-git-tag',
   publish: [
-    require.resolve('./plugins/semantic-release-build'),
+    'semantic-release-build',
     {
       path: '@semantic-release/github',
       assets: [
         {
           path: 'dist/',
-          name: pkgs.project.name,
-          label: 'Download',
+          name: `${pkgs.project.name}.zip`,
+          label: `Download ${pkgs.project.name}`,
         },
       ],
     },
