@@ -64,6 +64,6 @@ ${pkgs.project.author &&
   return config;
 };
 
-module.exports = glob(path.join(paths.project, 'src/**.js?(x)'))
-  .then(f => f.filter(ff => ff.includes('test')))
-  .then(files => files.map(createConfig));
+module.exports = glob(path.join(paths.project, 'src/**.js?(x)')).then(files =>
+  files.map(createConfig),
+);
