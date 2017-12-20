@@ -18,7 +18,7 @@ const babelPresets = useBuiltinBabelConfig ? here('../config/babelrc.js') : [];
 const targetEnv = process.env.TARGET_ENV;
 
 const createConfig = input => {
-  let pkgName = path.basename(input).replace(/\.js?(x)$/, '');
+  let pkgName = path.basename(input).replace(/\.jsx?$/, '');
   if (pkgName === 'index') pkgName = pkgs.project.name;
 
   const info = `
@@ -64,6 +64,6 @@ ${pkgs.project.author &&
   return config;
 };
 
-module.exports = glob(path.join(paths.project, 'src/**.js?(x)')).then(files =>
-  files.map(createConfig),
-);
+module.exports = glob(path.join(paths.project, 'src/**.js?(x)'))
+  .then(f => f.filter(ff => ff.includes('test')))
+  .then(files => files.map(createConfig));
