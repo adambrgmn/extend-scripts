@@ -1,8 +1,9 @@
 language: node_js
 
 cache:
+  yarn: true
   directories:
-    - ~/.npm
+    - node_modules
 
 notifications:
   email: false
@@ -10,10 +11,10 @@ notifications:
 node_js:
   - '8'
 
-script: npm run validate
+script: yarn run validate
 
 after_success:
-  - npm run travis-after-success
+  - yarn run travis-after-success
 
 branches:
   only:
