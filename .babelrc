@@ -1,0 +1,4 @@
+{
+  "presets": ["frans-scripts/babel"],
+  "plugins": ["transform-runtime"]
+}
