@@ -62,6 +62,7 @@
     "doctoc": "^1.3.0",
     "eslint": "^4.13.1",
     "eslint-plugin-extendscript": "^1.0.1",
+    "frans-scripts": "^1.3.0",
     "glob": "^7.1.2",
     "husky": "^0.14.3",
     "is-ci": "^1.0.10",
@@ -88,8 +89,7 @@
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "^6.23.0",
-    "cz-conventional-changelog": "^2.1.0",
-    "frans-scripts": "^1.3.0"
+    "cz-conventional-changelog": "^2.1.0"
   },
   "config": {
     "commitizen": {
