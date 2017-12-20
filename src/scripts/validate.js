@@ -11,15 +11,12 @@ const {
 async function main() {
   const isPrecommit = parseEnv('SCRIPTS_PRECOMMIT', false);
   const pm = getPackageManagerBin();
-  const extraDashDash = pm === 'npm' ? '-- ' : '';
 
   const scripts = {
     build: ifScript('build', `${pm} run build`),
     lint: isPrecommit ? null : ifScript('lint', `${pm} run lint`),
     flow: ifScript('flow', `${pm} run flow`),
-    test: isPrecommit
-      ? null
-      : ifScript('test', `${pm} run test ${extraDashDash}`),
+    test: isPrecommit ? null : ifScript('test', `${pm} run test`),
   };
 
   const result = spawn.sync(
