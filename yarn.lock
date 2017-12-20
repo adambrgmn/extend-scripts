@@ -2476,9 +2476,9 @@ form-data@~2.3.1:
     combined-stream "^1.0.5"
     mime-types "^2.1.12"
 
-frans-scripts@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/frans-scripts/-/frans-scripts-1.2.1.tgz#194dcf449c07b2df45f23be4f68a128a013d7a86"
+frans-scripts@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/frans-scripts/-/frans-scripts-1.3.0.tgz#b491042320c9a2908ea1c979cb2cb7bd93abee69"
   dependencies:
     all-contributors-cli "^4.10.1"
     arrify "^1.0.1"
