@@ -9,6 +9,9 @@ process.env.NODE_ENV = 'test';
 async function main() {
   const [, , ...args] = process.argv;
 
+  const isPrecommit = parseEnv('SCRIPTS_PRECOMMIT', false);
+  const isValidate = parseEnv('SCRIPTS_VALIDATE', false);
+
   const useBuiltinConfig =
     !args.includes('--config') &&
     !hasFile('jest.config.js') &&
@@ -16,13 +19,13 @@ async function main() {
 
   const useWatch =
     !isCI &&
-    !parseEnv('SCRIPTS_PRECOMMIT', false) &&
-    !parseEnv('SCRIPTS_VALIDATE', false) &&
+    !isPrecommit &&
+    !isValidate &&
     !args.includes('--no-watch') &&
     !args.includes('--coverage') &&
     !args.includes('--updateSnapshot');
 
-  const watch = useWatch ? ['--watch'] : [];
+  const watch = useWatch ? ['--watch', '--onlyChanged'] : [];
 
   const config = useBuiltinConfig
     ? ['--config', JSON.stringify(require('../config/jest.config'))]
