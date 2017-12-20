@@ -13,7 +13,7 @@ module.exports = {
     '**/*.+(js|jsx|json|less|scss|sass|css|ts|md)': [
       `${extendScripts} format`,
       `${extendScripts} lint`,
-      `${extendScripts} test --findRelatedTests`,
+      `${extendScripts} test --passWithNoTests --findRelatedTests`,
       'git add',
     ],
   },
