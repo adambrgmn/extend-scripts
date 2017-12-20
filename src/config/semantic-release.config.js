@@ -1,5 +1,4 @@
 const { parseEnv } = require('../utils');
-const { pkgs } = require('../utils');
 
 const autorelease =
   parseEnv('TRAVIS', false) &&
@@ -9,18 +8,16 @@ const autorelease =
 module.exports = {
   branch: 'master',
   dryRun: !autorelease,
+  verifyConditions: [
+    '@semantic-release/condition-travis',
+    '@semantic-release/github',
+  ],
   getLastRelease: '@semantic-release/last-release-git-tag',
   publish: [
     'semantic-release-build',
     {
       path: '@semantic-release/github',
-      assets: [
-        {
-          path: 'dist/',
-          name: `${pkgs.project.name}.zip`,
-          label: `Download ${pkgs.project.name}`,
-        },
-      ],
+      assets: 'dist',
     },
   ],
 };
