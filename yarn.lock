@@ -5380,7 +5380,16 @@ sax@^1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
-semantic-release@11:
+semantic-release-build@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/semantic-release-build/-/semantic-release-build-1.1.0.tgz#65b8f6d8c1a152c2729258728326585c648fc69e"
+  dependencies:
+    cross-spawn "^5.1.0"
+    cz-conventional-changelog "^2.1.0"
+    read-pkg-up "^3.0.0"
+    which "^1.3.0"
+
+semantic-release@^11.0.2:
   version "11.0.2"
   resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-11.0.2.tgz#2a09baa33a0e41926ac3290c8b110d22a5ba2a48"
   dependencies:
