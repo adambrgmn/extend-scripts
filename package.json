@@ -3,7 +3,7 @@
   "version": "0.0.0-semantically-released",
   "description":
     "Common scripts for developing and building Adobe Extendscript plugins",
-  "main": "index.js",
+  "main": "dist/index.js",
   "bin": {
     "extend-scripts": "dist/index.js"
   },
@@ -22,9 +22,8 @@
     "build": "frans-scripts build",
     "lint": "frans-scripts lint",
     "format": "frans-scripts format",
-    "validate": "frans-scripts validate",
     "precommit": "frans-scripts precommit",
-    "travis-after-success": "frans-scripts travis-after-success"
+    "release": "frans-scripts release"
   },
   "repository": {
     "type": "git",
@@ -42,12 +41,7 @@
     "npm": ">= 5"
   },
   "dependencies": {
-    "@semantic-release/github": "^2.2.3",
     "@semantic-release/last-release-git-tag": "^2.0.0",
-    "all-contributors-cli": "^4.9.1",
-    "arrify": "^1.0.1",
-    "babel-core": "^6.26.0",
-    "babel-jest": "^22.0.3",
     "babel-macros": "^1.2.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-minify-dead-code-elimination": "^0.2.0",
@@ -55,40 +49,21 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
-    "babel-runtime": "^6.26.0",
-    "chalk": "^2.3.0",
-    "concurrently": "^3.5.1",
-    "cross-spawn": "^5.1.0",
-    "doctoc": "^1.3.0",
-    "eslint": "^4.13.1",
     "eslint-plugin-extendscript": "^1.0.1",
-    "frans-scripts": "^1.3.0",
+    "execa": "^0.8.0",
+    "frans-scripts": "2.0.2",
     "glob": "^7.1.2",
-    "husky": "^0.14.3",
-    "is-ci": "^1.0.10",
-    "jest": "^22.0.3",
-    "lint-staged": "^6.0.0",
-    "lodash.has": "^4.5.2",
-    "prettier": "^1.9.2",
-    "read-pkg-up": "^3.0.0",
-    "resolve": "^1.5.0",
+    "ramda": "^0.25.0",
     "rimraf": "^2.6.2",
-    "rollup": "^0.52.3",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-es3": "^1.1.0",
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.1.0",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "semantic-release": "^11.0.2",
-    "semantic-release-build": "^1.1.0",
-    "semver": "^5.4.1",
-    "which": "^1.3.0",
-    "yargs-parser": "^8.1.0"
+    "rollup-plugin-node-resolve": "^3.0.0"
   },
   "devDependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0",
     "cz-conventional-changelog": "^2.1.0"
   },
   "config": {
