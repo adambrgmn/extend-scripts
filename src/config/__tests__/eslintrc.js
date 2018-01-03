@@ -1,5 +1,5 @@
-import { CLIEngine } from 'eslint';
-import baseConfig from '../eslintrc';
+import { CLIEngine } from 'eslint'; // eslint-disable-line
+import baseConfig from '../eslint.config';
 
 const cli = new CLIEngine({
   useEslintrc: false,

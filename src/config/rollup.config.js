@@ -8,28 +8,24 @@ const commonjs = require('rollup-plugin-commonjs');
 const json = require('rollup-plugin-json');
 const babel = require('rollup-plugin-babel');
 const es3 = require('rollup-plugin-es3');
-const { hasFile, hasPkgProp, paths, pkgs } = require('../utils');
+const { appDirectory, pkg } = require('frans-scripts/utils');
 
-const here = p => path.join(__dirname, p);
-
-const useBuiltinBabelConfig = !hasFile('.babelrc') && !hasPkgProp('babel');
-const babelPresets = useBuiltinBabelConfig ? here('../config/babelrc.js') : [];
+const babelPresets = require.resolve('./babel.config.js');
 
 const targetEnv = process.env.TARGET_ENV;
 
 const createConfig = input => {
   let pkgName = path.basename(input).replace(/\.jsx?$/, '');
-  if (pkgName === 'index') pkgName = pkgs.project.name;
+  if (pkgName === 'index') pkgName = pkg.name;
 
   const info = `
 /**
  * ${pkgName}
- * v${pkgs.project.version}
+ * v${pkg.version}
  * Updated: ${new Date().toLocaleDateString()}
  * 
- * ${pkgs.project.description}
-${pkgs.project.author &&
-    ` * by ${pkgs.project.author.name} (${pkgs.project.author.email})`}
+ * ${pkg.description || ''}
+ * ${pkg.author ? `by ${pkg.author.name} (${pkg.author.email})` : ''}
  */
 `;
 
@@ -64,6 +60,6 @@ ${pkgs.project.author &&
   return config;
 };
 
-module.exports = glob(path.join(paths.project, 'src/**.js?(x)')).then(files =>
+module.exports = glob(path.join(appDirectory, 'src/**.js?(x)')).then(files =>
   files.map(createConfig),
 );

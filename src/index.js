@@ -1,22 +1,23 @@
 #!/usr/bin/env node
 
-const { satisfies, clean } = require('semver');
-const { engines } = require('../package.json');
+const fransScripts = require('frans-scripts');
+const pkg = require('../package.json');
 
-let shouldThrow;
+const actions = {
+  bundle: {
+    script: require.resolve('./scripts/bundle.js'),
+    config: require.resolve('./config/rollup.config.js'),
+  },
+  lint: {
+    config: require.resolve('./config/eslint.config.js'),
+  },
+  release: {
+    config: require.resolve('./config/semantic-release.config.js'),
+  },
+  contributors: {},
+  format: {},
+  precommit: {},
+  test: {},
+};
 
-try {
-  shouldThrow =
-    require(`${process.cwd()}/package.json`).name === 'extend-scripts' &&
-    !satisfies(clean(process.version), engines.node);
-} catch (error) {
-  // ignore
-}
-
-if (shouldThrow) {
-  throw new Error(
-    'You must use Node version 8 or greater to run the scripts within extend-scripts because we dogfood the untranspiled version of the scripts.',
-  );
-}
-
-require('./run-scripts');
+fransScripts(actions, pkg);
