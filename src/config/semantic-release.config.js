@@ -6,7 +6,7 @@ module.exports = {
   ],
   getLastRelease: '@semantic-release/last-release-git-tag',
   publish: [
-    require.resolve('./plugins/semantic-release-build.js'),
+    'semantic-release-build',
     {
       path: '@semantic-release/github',
       assets: 'dist',
