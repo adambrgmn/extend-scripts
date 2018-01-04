@@ -4,7 +4,7 @@ module.exports = {
     '@semantic-release/condition-travis',
     '@semantic-release/github',
   ],
-  getLastRelease: '@semantic-release/last-release-git-tag',
+  getLastRelease: '@semantic-release/git',
   publish: [
     'semantic-release-build',
     {
