@@ -38,7 +38,6 @@ const createConfig = input => {
     plugins: [
       json(),
       babel({
-        externalHelpers: true,
         babelrc: true,
         exclude: 'node_modules/**',
         presets: babelPresets,
