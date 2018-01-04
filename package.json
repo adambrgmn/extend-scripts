@@ -23,6 +23,8 @@
     "lint": "frans-scripts lint",
     "format": "frans-scripts format",
     "precommit": "frans-scripts precommit",
+    "validate":
+      "yarn run lint && yarn run test --no-watch --passWithNoTests && yarn run build",
     "release": "frans-scripts release"
   },
   "repository": {
