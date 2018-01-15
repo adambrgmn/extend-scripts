@@ -86,14 +86,14 @@
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@semantic-release/error/-/error-2.1.0.tgz#44771f676f5b148da309111285a97901aa95a6e0"
 
-"@semantic-release/git@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@semantic-release/git/-/git-2.0.1.tgz#19a1877617675d2c781d0c73ef5758e3db1f4cd0"
+"@semantic-release/git@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@semantic-release/git/-/git-2.0.2.tgz#00f82f338999820cf54beb8e9e3acdd5b160f571"
   dependencies:
     "@semantic-release/error" "^2.1.0"
     debug "^3.1.0"
     dir-glob "^2.0.0"
-    execa "^0.8.0"
+    execa "^0.9.0"
     fs-extra "^5.0.0"
     git-url-parse "^7.0.1"
     lodash "^4.17.4"
