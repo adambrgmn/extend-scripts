@@ -53,7 +53,7 @@
     "babel-preset-flow": "^6.23.0",
     "eslint-plugin-extendscript": "^1.0.1",
     "execa": "^0.9.0",
-    "frans-scripts": "2.1.2",
+    "frans-scripts": "^2.1.3",
     "glob": "^7.1.2",
     "ramda": "^0.25.0",
     "rimraf": "^2.6.2",
