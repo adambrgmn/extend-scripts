@@ -50,7 +50,7 @@ const createConfig = input => {
     ],
     banner,
     output: {
-      file: `dist/${pkgName}.jsx`,
+      file: `dist/${pkgName}-${pkg.version}.jsx`,
       format: 'iife',
       exports: 'none',
     },
