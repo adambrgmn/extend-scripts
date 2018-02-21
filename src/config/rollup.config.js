@@ -48,11 +48,11 @@ const createConfig = input => {
       commonjs({ include: 'node_modules/**' }),
       es3(),
     ],
-    banner,
     output: {
       file: `dist/${pkgName}-${pkg.version}.jsx`,
       format: 'iife',
       exports: 'none',
+      banner,
     },
   };
 
